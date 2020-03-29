@@ -1,0 +1,27 @@
+
+# Below command will install the older version
+#yum install git
+#Login as a root user
+
+sudo su -
+cd /opt
+yum groupinstall "Development Tools" -y
+yum install gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel curl-devel -y
+yum install wget tar -y
+##Open below URL and select the specific version and right click on that and click on Copy Link Address, then execute the wget command.
+##https://github.com/git/git/releases
+wget https://github.com/git/git/archive/v2.26.0.tar.gz -O git-bash.tar.gz
+tar -zxf git-bash.tar.gz
+
+cd git-2.26.0
+make configure
+#Configure
+./configure --prefix=/usr/local
+#Install
+make install
+
+git --version
+
+git config --global user.name "venkatchodisetti"
+git config --global user.email "vallikachakravartula@gmail.com"
+git config --list
